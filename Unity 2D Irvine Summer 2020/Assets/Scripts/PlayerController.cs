@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     public GroundCheck GC;
-    
+    public float DeathForce = 500;
 
     // Start is called before the first frame update
     void Start()
