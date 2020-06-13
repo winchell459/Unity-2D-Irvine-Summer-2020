@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1034323919782997635}
   - component: {fileID: 1034323919782997660}
   - component: {fileID: 1034323919782997661}
+  - component: {fileID: 1290519895}
   m_Layer: 0
   m_Name: Saw Too
   m_TagString: Untagged
@@ -134,3 +135,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hinge: {fileID: 0}
+--- !u!95 &1290519895
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034323919782997662}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee8f1f5eacda2bc419770a5fb704ee4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
