@@ -5,7 +5,12 @@ using UnityEngine;
 public class Saw : MonoBehaviour
 {
     public Transform Hinge;
+    public float Speed = 1;
 
+    private void Start()
+    {
+        GetComponent<Animator>().speed = Speed;
+    }
     private void FixedUpdate()
     {
         if (Hinge) transform.position = Hinge.position;
