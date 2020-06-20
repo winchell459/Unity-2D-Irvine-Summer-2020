@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1696409591150508414}
   - component: {fileID: 1696409591150508415}
   - component: {fileID: 1696409591150508412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eggman_rightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1696409592208316323}
   - component: {fileID: 1696409592208316320}
   - component: {fileID: 1696409592208316321}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eggman_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 1696409592548583450}
   - component: {fileID: 1696409592548583451}
   - component: {fileID: 1696409592548583448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eggman_Glasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 1696409592633794056}
   - component: {fileID: 1696409592633794057}
   - component: {fileID: 1696409592633794070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eggman_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 1696409592911622419}
   - component: {fileID: 1696409592911622416}
   - component: {fileID: 1696409592911622417}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eggman_RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 1696409592936665800}
   - component: {fileID: 1696409592936665803}
   - component: {fileID: 1696409592936665814}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -866,8 +866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a744de4c0d0495c98fba7e807c6ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 5
-  JumpSpeed: 3
+  WalkSpeed: 8
+  JumpSpeed: 5
   JumpingSpeedFraction: 0.25
   DeathForce: 500
   dying: 0
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 1696409593177912023}
   - component: {fileID: 1696409593177912020}
   - component: {fileID: 1696409593177912021}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eggman_LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
