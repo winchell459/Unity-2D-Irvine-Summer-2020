@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : PhysicsObject
 {
     public float WalkSpeed = 5f;
     public float JumpSpeed = 5f;
@@ -21,57 +21,96 @@ public class PlayerController : MonoBehaviour
     public GameObject Body;
     //public float DeathForce = 500;
 
+    public bool GetGrounded() { return grounded; }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void ComputeVelocity()
     {
-        if(!dying && !dead)
+        if (!dying && !dead)
         {
-            if (rb.velocity.x != 0) anim.SetBool("Walking", true);
+            Vector2 move = Vector2.zero;
+            float h = Input.GetAxis("Horizontal");
+
+            if (jumping) h = h * JumpingSpeedFraction;
+
+            move.x = h;
+
+            if (h > 0) transform.localScale = new Vector3(1, 1, 1);
+            else if (h < 0) transform.localScale = new Vector3(-1, 1, 1);
+
+            if (h != 0) anim.SetBool("Walking", true);
             else anim.SetBool("Walking", false);
 
-            if (GC.isGrounded && Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Jump") && grounded)
             {
                 anim.SetBool("Jumping", true);
                 jumping = true;
             }
-        }else if (dying)
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * 0.5f;
+                }
+            }
+
+            targetVelocity = move * WalkSpeed;
+        }
+        else if (dying)
         {
             anim.SetTrigger("Dead");
         }
     }
+    // Update is called once per frame
+    //void Update()
+    //{
+    //    if(!dying && !dead)
+    //    {
+    //        if (rb.velocity.x != 0) anim.SetBool("Walking", true);
+    //        else anim.SetBool("Walking", false);
 
-    private void FixedUpdate()
-    {
-        if(!dying && !dead)
-        {
-            float h = Input.GetAxis("Horizontal");
+    //        if (GC.isGrounded && Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            anim.SetBool("Jumping", true);
+    //            jumping = true;
+    //        }
+    //    }else if (dying)
+    //    {
+    //        anim.SetTrigger("Dead");
+    //    }
+    //}
 
-            if (jumping) h = h * JumpingSpeedFraction;
-            //calc force to add to player for WalkSpeed
-            float F = ((WalkSpeed * h - rb.velocity.x) / Time.deltaTime) * rb.mass;  //((V - Vi)/time) * mass
-            rb.AddForce(new Vector2(F, 0));
+    //private void FixedUpdate()
+    //{
+    //    if(!dying && !dead)
+    //    {
+    //        float h = Input.GetAxis("Horizontal");
 
-            if (h > 0) transform.localScale = new Vector3(1, 1, 1);
-            else if (h < 0) transform.localScale = new Vector3(-1, 1, 1);
-        }
+    //        if (jumping) h = h * JumpingSpeedFraction;
+    //        //calc force to add to player for WalkSpeed
+    //        float F = ((WalkSpeed * h - rb.velocity.x) / Time.deltaTime) * rb.mass;  //((V - Vi)/time) * mass
+    //        rb.AddForce(new Vector2(F, 0));
+
+    //        if (h > 0) transform.localScale = new Vector3(1, 1, 1);
+    //        else if (h < 0) transform.localScale = new Vector3(-1, 1, 1);
+    //    }
         
 
         
-    }
+    //}
 
     public void Jump()
     {
-        if (GC.isGrounded)
+        if (grounded)
         {
-            float F = ((JumpSpeed - rb.velocity.y) / Time.deltaTime) * rb.mass;
-            rb.AddForce(new Vector2(0, F));
+            //float F = ((JumpSpeed - rb.velocity.y) / Time.deltaTime) * rb.mass;
+            //rb.AddForce(new Vector2(0, F));
+            velocity.y = JumpSpeed;
         }
         jumping = false;
     }
