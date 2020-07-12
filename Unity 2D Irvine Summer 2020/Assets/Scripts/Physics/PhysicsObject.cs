@@ -37,7 +37,13 @@ public class PhysicsObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        targetVelocity = Vector2.zero;
+        ComputeVelocity();
+    }
+
+    protected virtual void ComputeVelocity()
+    {
+        Debug.Log("Base ComputeVelocity");
     }
 
     private void FixedUpdate()
